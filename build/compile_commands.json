@@ -1,0 +1,26 @@
+[
+{
+  "directory": "/home/ethan/Desktop/UDP_Project/build",
+  "command": "/usr/bin/c++  -I/home/ethan/Desktop/UDP_Project/include/moldcast -g -std=c++20 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -o CMakeFiles/moldcast.dir/src/header.cpp.o -c /home/ethan/Desktop/UDP_Project/src/header.cpp",
+  "file": "/home/ethan/Desktop/UDP_Project/src/header.cpp",
+  "output": "CMakeFiles/moldcast.dir/src/header.cpp.o"
+},
+{
+  "directory": "/home/ethan/Desktop/UDP_Project/build",
+  "command": "/usr/bin/c++  -I/home/ethan/Desktop/UDP_Project/include/moldcast -g -std=c++20 -Wall -Wextra -Wpedantic -fsanitize=address,undefined -fno-omit-frame-pointer -o CMakeFiles/moldcast.dir/src/socket.cpp.o -c /home/ethan/Desktop/UDP_Project/src/socket.cpp",
+  "file": "/home/ethan/Desktop/UDP_Project/src/socket.cpp",
+  "output": "CMakeFiles/moldcast.dir/src/socket.cpp.o"
+},
+{
+  "directory": "/home/ethan/Desktop/UDP_Project/build",
+  "command": "/usr/bin/c++  -I/home/ethan/Desktop/UDP_Project/include/moldcast -g -std=c++20 -fsanitize=address,undefined -fno-omit-frame-pointer -o CMakeFiles/sender.dir/tools/sender.cpp.o -c /home/ethan/Desktop/UDP_Project/tools/sender.cpp",
+  "file": "/home/ethan/Desktop/UDP_Project/tools/sender.cpp",
+  "output": "CMakeFiles/sender.dir/tools/sender.cpp.o"
+},
+{
+  "directory": "/home/ethan/Desktop/UDP_Project/build",
+  "command": "/usr/bin/c++  -I/home/ethan/Desktop/UDP_Project/include/moldcast -g -std=c++20 -fsanitize=address,undefined -fno-omit-frame-pointer -o CMakeFiles/receiver.dir/tools/receiver.cpp.o -c /home/ethan/Desktop/UDP_Project/tools/receiver.cpp",
+  "file": "/home/ethan/Desktop/UDP_Project/tools/receiver.cpp",
+  "output": "CMakeFiles/receiver.dir/tools/receiver.cpp.o"
+}
+]

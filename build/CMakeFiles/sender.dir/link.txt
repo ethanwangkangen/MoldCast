@@ -1,0 +1,1 @@
+/usr/bin/c++ -g -fsanitize=address,undefined CMakeFiles/sender.dir/tools/sender.cpp.o -o sender  libmoldcast.a 

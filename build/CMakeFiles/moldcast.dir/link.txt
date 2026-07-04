@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmoldcast.a CMakeFiles/moldcast.dir/src/header.cpp.o CMakeFiles/moldcast.dir/src/socket.cpp.o
+/usr/bin/ranlib libmoldcast.a
