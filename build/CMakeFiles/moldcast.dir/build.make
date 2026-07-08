@@ -97,19 +97,35 @@ CMakeFiles/moldcast.dir/src/socket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/moldcast.dir/src/socket.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ethan/Desktop/UDP_Project/src/socket.cpp -o CMakeFiles/moldcast.dir/src/socket.cpp.s
 
+CMakeFiles/moldcast.dir/src/epollWrapper.cpp.o: CMakeFiles/moldcast.dir/flags.make
+CMakeFiles/moldcast.dir/src/epollWrapper.cpp.o: /home/ethan/Desktop/UDP_Project/src/epollWrapper.cpp
+CMakeFiles/moldcast.dir/src/epollWrapper.cpp.o: CMakeFiles/moldcast.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ethan/Desktop/UDP_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/moldcast.dir/src/epollWrapper.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/moldcast.dir/src/epollWrapper.cpp.o -MF CMakeFiles/moldcast.dir/src/epollWrapper.cpp.o.d -o CMakeFiles/moldcast.dir/src/epollWrapper.cpp.o -c /home/ethan/Desktop/UDP_Project/src/epollWrapper.cpp
+
+CMakeFiles/moldcast.dir/src/epollWrapper.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/moldcast.dir/src/epollWrapper.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ethan/Desktop/UDP_Project/src/epollWrapper.cpp > CMakeFiles/moldcast.dir/src/epollWrapper.cpp.i
+
+CMakeFiles/moldcast.dir/src/epollWrapper.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/moldcast.dir/src/epollWrapper.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ethan/Desktop/UDP_Project/src/epollWrapper.cpp -o CMakeFiles/moldcast.dir/src/epollWrapper.cpp.s
+
 # Object files for target moldcast
 moldcast_OBJECTS = \
 "CMakeFiles/moldcast.dir/src/header.cpp.o" \
-"CMakeFiles/moldcast.dir/src/socket.cpp.o"
+"CMakeFiles/moldcast.dir/src/socket.cpp.o" \
+"CMakeFiles/moldcast.dir/src/epollWrapper.cpp.o"
 
 # External object files for target moldcast
 moldcast_EXTERNAL_OBJECTS =
 
 libmoldcast.a: CMakeFiles/moldcast.dir/src/header.cpp.o
 libmoldcast.a: CMakeFiles/moldcast.dir/src/socket.cpp.o
+libmoldcast.a: CMakeFiles/moldcast.dir/src/epollWrapper.cpp.o
 libmoldcast.a: CMakeFiles/moldcast.dir/build.make
 libmoldcast.a: CMakeFiles/moldcast.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ethan/Desktop/UDP_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libmoldcast.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/ethan/Desktop/UDP_Project/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libmoldcast.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/moldcast.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/moldcast.dir/link.txt --verbose=$(VERBOSE)
 

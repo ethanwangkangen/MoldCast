@@ -165,6 +165,30 @@ receiver/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/receiver.dir/build.make CMakeFiles/receiver.dir/build
 .PHONY : receiver/fast
 
+src/epollWrapper.o: src/epollWrapper.cpp.o
+.PHONY : src/epollWrapper.o
+
+# target to build an object file
+src/epollWrapper.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/moldcast.dir/build.make CMakeFiles/moldcast.dir/src/epollWrapper.cpp.o
+.PHONY : src/epollWrapper.cpp.o
+
+src/epollWrapper.i: src/epollWrapper.cpp.i
+.PHONY : src/epollWrapper.i
+
+# target to preprocess a source file
+src/epollWrapper.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/moldcast.dir/build.make CMakeFiles/moldcast.dir/src/epollWrapper.cpp.i
+.PHONY : src/epollWrapper.cpp.i
+
+src/epollWrapper.s: src/epollWrapper.cpp.s
+.PHONY : src/epollWrapper.s
+
+# target to generate assembly for a file
+src/epollWrapper.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/moldcast.dir/build.make CMakeFiles/moldcast.dir/src/epollWrapper.cpp.s
+.PHONY : src/epollWrapper.cpp.s
+
 src/header.o: src/header.cpp.o
 .PHONY : src/header.o
 
@@ -273,6 +297,9 @@ help:
 	@echo "... moldcast"
 	@echo "... receiver"
 	@echo "... sender"
+	@echo "... src/epollWrapper.o"
+	@echo "... src/epollWrapper.i"
+	@echo "... src/epollWrapper.s"
 	@echo "... src/header.o"
 	@echo "... src/header.i"
 	@echo "... src/header.s"

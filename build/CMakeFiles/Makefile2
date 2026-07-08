@@ -102,12 +102,12 @@ tests/clean:
 CMakeFiles/moldcast.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/moldcast.dir/build.make CMakeFiles/moldcast.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/moldcast.dir/build.make CMakeFiles/moldcast.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ethan/Desktop/UDP_Project/build/CMakeFiles --progress-num=1,2,3 "Built target moldcast"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ethan/Desktop/UDP_Project/build/CMakeFiles --progress-num=1,2,3,4 "Built target moldcast"
 .PHONY : CMakeFiles/moldcast.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/moldcast.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Desktop/UDP_Project/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Desktop/UDP_Project/build/CMakeFiles 4
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/moldcast.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Desktop/UDP_Project/build/CMakeFiles 0
 .PHONY : CMakeFiles/moldcast.dir/rule
@@ -128,12 +128,12 @@ CMakeFiles/moldcast.dir/clean:
 CMakeFiles/sender.dir/all: CMakeFiles/moldcast.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sender.dir/build.make CMakeFiles/sender.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sender.dir/build.make CMakeFiles/sender.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ethan/Desktop/UDP_Project/build/CMakeFiles --progress-num=6,7 "Built target sender"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ethan/Desktop/UDP_Project/build/CMakeFiles --progress-num=7,8 "Built target sender"
 .PHONY : CMakeFiles/sender.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/sender.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Desktop/UDP_Project/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Desktop/UDP_Project/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/sender.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Desktop/UDP_Project/build/CMakeFiles 0
 .PHONY : CMakeFiles/sender.dir/rule
@@ -154,12 +154,12 @@ CMakeFiles/sender.dir/clean:
 CMakeFiles/receiver.dir/all: CMakeFiles/moldcast.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/receiver.dir/build.make CMakeFiles/receiver.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/receiver.dir/build.make CMakeFiles/receiver.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ethan/Desktop/UDP_Project/build/CMakeFiles --progress-num=4,5 "Built target receiver"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/ethan/Desktop/UDP_Project/build/CMakeFiles --progress-num=5,6 "Built target receiver"
 .PHONY : CMakeFiles/receiver.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/receiver.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Desktop/UDP_Project/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Desktop/UDP_Project/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/receiver.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/ethan/Desktop/UDP_Project/build/CMakeFiles 0
 .PHONY : CMakeFiles/receiver.dir/rule

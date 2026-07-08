@@ -20,6 +20,7 @@ endif()
 add_library(moldcast
     src/header.cpp
     src/socket.cpp
+    src/epollWrapper.cpp
 )
 
 target_include_directories(moldcast PUBLIC
@@ -51,6 +52,7 @@ target_link_libraries(sender PRIVATE moldcast)
 
 add_executable(receiver tools/receiver.cpp)
 target_link_libraries(receiver PRIVATE moldcast)
+
 
 # ---------------- tests ----------------
 
