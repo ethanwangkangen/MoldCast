@@ -18,6 +18,9 @@ Socket::Socket() : fd_{socket(AF_INET, SOCK_DGRAM, 0)} {
   if (fd_ == -1) {
     throw std::runtime_error("socket creation failed");
   }
+  // allow reuse
+  int reuse = 1;
+  setsockopt(fd_, SOL_SOCKET, SO_REUSEADDR, &reuse, sizeof(reuse));
 }
 Socket::~Socket() {
   int rc = close(fd_);
@@ -40,6 +43,13 @@ void Socket::bindTo(uint16_t port) {
   if (rc < 0)
     throw std::system_error(errno, std::generic_category(), "bind");
   std::cerr << "Bind successful. \n";
+}
+
+void Socket::joinGroup() {
+  struct ip_mreq mreq;
+  mreq.imr_multiaddr.s_addr = inet_addr("239.0.0.1"); // multicast group
+  mreq.imr_interface.s_addr = htonl(INADDR_ANY); // any interface
+  setsockopt(getFileDesc(), IPPROTO_IP, IP_ADD_MEMBERSHIP, &mreq, sizeof(mreq));
 }
 
 int Socket::getFileDesc() const { return fd_; }
