@@ -40,6 +40,9 @@ int main(int argc, char *argv[]) {
     return 1;
   }
 
+  // join multicast group
+  socket.joinGroup();
+
   moldcast::EpollWrapper epoll_wrapper{epoll_create1(0)};
 
   // struct for the socket

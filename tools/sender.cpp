@@ -33,10 +33,11 @@ int main(int argc, char *argv[]) {
 
   uint16_t port = 9000; // todo change this
 
+  // struct for destination
   sockaddr_in destAddr{};
   destAddr.sin_family = AF_INET;
   destAddr.sin_port = htons(port);
-  inet_pton(AF_INET, "127.0.0.1",
+  inet_pton(AF_INET, "239.0.0.1",
             &destAddr.sin_addr); // converts to binary wire form and writes it
                                  // into the struct
   socklen_t addrLen = sizeof(destAddr);
