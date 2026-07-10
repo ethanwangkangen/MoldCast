@@ -1,7 +1,9 @@
 #include "sender.hpp"
+#include "header.hpp"
 #include <arpa/inet.h>
 #include <cassert>
 #include <cstdint>
+#include <endian.h>
 #include <iostream>
 #include <netinet/in.h>
 #include <span>
@@ -43,9 +45,17 @@ int main(int argc, char *argv[]) {
   socklen_t addrLen = sizeof(destAddr);
 
   // get pointer with .data()
-  std::string dummyStr = "This is some test data\n";
+  // std::string dummyStr = "This is some test data\n";
+  moldcast::Header dummy{};
+  std::string name = "Session 1";
+  for (int i{}; i < name.size(); ++i)
+    dummy.session_name[i] = std::byte{name[i]};
+  dummy.sequence = htobe64(1234);
+  dummy.message_count = htons(12);
 
-  sendto(sender.getFileDesc(), dummyStr.data(), dummyStr.size(), 0,
+  assert(sizeof(dummy) == 20);
+
+  sendto(sender.getFileDesc(), &dummy, sizeof(dummy), 0,
          reinterpret_cast<sockaddr *>(&destAddr), addrLen);
 
   return 0;

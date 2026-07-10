@@ -48,7 +48,7 @@ void Socket::bindTo(uint16_t port) {
 void Socket::joinGroup() {
   struct ip_mreq mreq;
   mreq.imr_multiaddr.s_addr = inet_addr("239.0.0.1"); // multicast group
-  mreq.imr_interface.s_addr = htonl(INADDR_ANY); // any interface
+  mreq.imr_interface.s_addr = htonl(INADDR_ANY);      // any interface
   setsockopt(getFileDesc(), IPPROTO_IP, IP_ADD_MEMBERSHIP, &mreq, sizeof(mreq));
 }
 

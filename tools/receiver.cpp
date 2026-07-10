@@ -3,6 +3,8 @@
 #include <arpa/inet.h>
 #include <cassert>
 #include <cstdint>
+#include <cstring>
+#include <endian.h>
 #include <iostream>
 #include <netinet/in.h>
 #include <socket.hpp>
@@ -62,7 +64,7 @@ int main(int argc, char *argv[]) {
 
   while (true) {
     int n = epoll_wrapper.wait(events, 1000); // TODO: magic constant
-    if (!n || n < 0) { // ignore if error
+    if (!n || n < 0) {                        // ignore if error
       std::cerr << "Nothing received in 1000ms\n";
       continue;
     }
@@ -71,8 +73,22 @@ int main(int argc, char *argv[]) {
       assert(fd_ = socket.getFileDesc());
       size_t sz = socket.receiveFrom(arr, src, srclen);
       std::cerr << sz << " bytes received\n";
-      for (size_t i{}; i < sz; ++i)
+
+      // 10 bytes for session name
+      for (size_t i{}; i < 10; ++i)
         std::cout << static_cast<char>(arr[i]);
+      std::cout << "\n";
+      // 8 bytes for sequence number
+      std::uint64_t sequence_number{};
+      std::memcpy(&sequence_number, arr.data() + 10, sizeof(sequence_number));
+      sequence_number = be64toh(sequence_number);
+      std::cout << "Sequence number is " << sequence_number << "\n";
+
+      // 2 bytes for message count
+      std::uint16_t message_count{};
+      std::memcpy(&message_count, arr.data() + 18, sizeof(message_count));
+      message_count = ntohs(message_count);
+      std::cout << "Message count is " << message_count << "\n";
     }
   }
 

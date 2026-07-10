@@ -1,16 +1,12 @@
-namespace moldcast {
-class Socket {
-public:
-  Socket();
-  ~Socket();
-  Socket(const Socket &) = delete;
-  Socket &operator=(const Socket &) = delete;
-  Socket(Socket &&) = delete; // TODO
-  Socket(const Socket &&) = delete;
-  void bindTo(uint16_t port);
-  void getFileDesc() const;
+#include <cstddef>
+#include <cstdint>
 
-private:
-  int fd_;
-}
+#pragma pack(push, 1)
+namespace moldcast {
+struct Header {
+  std::byte session_name[10];
+  uint64_t sequence;
+  uint16_t message_count;
+};
 } // namespace moldcast
+#pragma pack(pop)

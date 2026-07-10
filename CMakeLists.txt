@@ -18,7 +18,6 @@ endif()
 # ---------------- library ----------------
 
 add_library(moldcast
-    src/header.cpp
     src/socket.cpp
     src/epollWrapper.cpp
 )
