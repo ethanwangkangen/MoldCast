@@ -57,11 +57,14 @@ int Socket::getFileDesc() const { return fd_; }
 // src and srclen are the in and out parameters
 // std::span is copy converted from std::array, but writes into the correct
 // memory hence no reference taken
-ssize_t Socket::receiveFrom(std::span<std::byte> buf, sockaddr_in &src,
-                            socklen_t &srclen) {
+ssize_t Socket::receiveFrom(std::span<std::byte> buf, sockaddr_in& src,
+                            socklen_t& srclen) {
   ssize_t sz = recvfrom(fd_, buf.data(), buf.size(), 0,
                         reinterpret_cast<sockaddr *>(&src), &srclen);
   return sz;
 }
 
+void Socket::sendTo(std::span<std::byte> buf, size_t length, sockaddr_in& dst, socklen_t& addrLen) {
+  sendto(fd_, buf.data(), length, 0, reinterpret_cast<sockaddr*>(&dst), addrLen);
+}
 } // namespace moldcast

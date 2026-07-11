@@ -1,4 +1,5 @@
 #define DEFAULT_PORT 9000
+#include "receiver.hpp"
 #include "EpollWrapper.hpp"
 #include <arpa/inet.h>
 #include <cassert>
@@ -18,20 +19,21 @@ void printUsage() { std::cerr << "Usage: ./receiver [port]\n"; }
 } // namespace moldcast
 
 int main(int argc, char *argv[]) {
-  moldcast::Socket socket{};
+  // moldcast::Socket socket{};
+  moldcast::Receiver receiver{};
 
   // Bind socket to a port
   if (argc == 1) {
-    socket.bindTo(DEFAULT_PORT);
+    receiver.socket.bindTo(DEFAULT_PORT);
   } else if (argc == 2) {
     try {
       int port = std::stoi(argv[1]);
       if (port < 1 || port > 65535) {
         moldcast::printUsage();
       }
-      socket.bindTo(static_cast<uint16_t>(port));
+      receiver.socket.bindTo(static_cast<uint16_t>(port));
       std::cerr << "Socket is bound and file descriptor is "
-                << socket.getFileDesc() << "\n";
+                << receiver.socket.getFileDesc() << "\n";
     } catch (const std::exception &e) {
       std::cerr << e.what() << "\n";
       moldcast::printUsage();
@@ -43,8 +45,12 @@ int main(int argc, char *argv[]) {
   }
 
   // join multicast group
-  socket.joinGroup();
+  receiver.socket.joinGroup();
+  receiver.receiveLoop();
+  return 0;
+}
 
+void moldcast::Receiver::receiveLoop() {
   moldcast::EpollWrapper epoll_wrapper{epoll_create1(0)};
 
   // struct for the socket
@@ -89,15 +95,15 @@ int main(int argc, char *argv[]) {
       std::memcpy(&message_count, arr.data() + 18, sizeof(message_count));
       message_count = ntohs(message_count);
       std::cout << "Message count is " << message_count << "\n";
-      
-      auto get_message = [](std::array<std::byte, 2048>& arr, size_t& offset) {
+
+      auto get_message = [](std::array<std::byte, 2048> &arr, size_t &offset) {
         std::uint16_t messageLength{};
         std::memcpy(&messageLength, arr.data() + offset, sizeof(messageLength));
         offset += sizeof(messageLength);
         messageLength = ntohs(messageLength);
         std::cout << "Message of length " << messageLength << "\n";
-        for (size_t i{}; i < messageLength; ++i) 
-          std::cout << static_cast<char> (arr[offset+i]);
+        for (size_t i{}; i < messageLength; ++i)
+          std::cout << static_cast<char>(arr[offset + i]);
         std::cout << "\n";
         offset += messageLength;
       };
@@ -108,6 +114,4 @@ int main(int argc, char *argv[]) {
       }
     }
   }
-
-  return 0;
 }
