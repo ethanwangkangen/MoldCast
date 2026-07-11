@@ -13,6 +13,8 @@ public:
   int getFileDesc() const;
   ssize_t receiveFrom(std::span<std::byte> buf, sockaddr_in &src,
                       socklen_t &srclen);
+  void sendTo(std::span<std::byte> buf, size_t length, sockaddr_in &dst,
+              socklen_t &addrLen);
   void joinGroup();
 
 private:

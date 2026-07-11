@@ -14,16 +14,17 @@
 #include <unistd.h>
 
 namespace moldcast {
-class Sender {
+class Receiver {
 public:
-  Sender() = default;
-  ~Sender() = default;
-  Sender(const Sender &) = delete;
-  Sender(Sender &&) = delete;
-  Sender &operator=(const Sender &) = delete;
-  Sender &operator=(Sender &&) = delete;
+  Receiver() = default;
+  ~Receiver() = default;
+  Receiver(const Receiver &) = delete;
+  Receiver(Receiver &&) = delete;
+  Receiver &operator=(const Receiver &) = delete;
+  Receiver &operator=(Receiver &&) = delete;
 
   moldcast::Socket socket{};
+  void receiveLoop();
 
 private:
 };
