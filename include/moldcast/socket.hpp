@@ -1,5 +1,10 @@
 #pragma once
+#include <cstdint>
+#include <cstddef>
 #include <span>
+#include <netinet/in.h>
+#include <sys/socket.h>
+#include <unistd.h>
 namespace moldcast {
 class Socket {
 public:
@@ -11,10 +16,10 @@ public:
   Socket(const Socket &&) = delete;
   void bindTo(uint16_t port);
   int getFileDesc() const;
-  ssize_t receiveFrom(std::span<std::byte> buf, sockaddr_in &src,
-                      socklen_t &srclen);
-  void sendTo(std::span<std::byte> buf, size_t length, sockaddr_in &dst,
-              socklen_t &addrLen);
+  ssize_t receiveFrom(std::span<std::byte> buf, sockaddr_in& src,
+                      socklen_t& srclen);
+  void sendTo(std::span<std::byte> buf, size_t length, sockaddr_in& dst,
+              socklen_t& addrLen);
   void joinGroup();
 
 private:

@@ -26,6 +26,9 @@ public:
   moldcast::Socket socket{};
   void receiveLoop();
 
+
+  void account_for(std::uint64_t sequence_number, std::uint16_t message_count);
 private:
+  std::uint64_t next_expected{1};
 };
 } // namespace moldcast

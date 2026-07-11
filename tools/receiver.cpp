@@ -96,15 +96,20 @@ void moldcast::Receiver::receiveLoop() {
       message_count = ntohs(message_count);
       std::cout << "Message count is " << message_count << "\n";
 
+      // record it
+      account_for(sequence_number, message_count);
+
       auto get_message = [](std::array<std::byte, 2048> &arr, size_t &offset) {
         std::uint16_t messageLength{};
         std::memcpy(&messageLength, arr.data() + offset, sizeof(messageLength));
         offset += sizeof(messageLength);
         messageLength = ntohs(messageLength);
+        /**
         std::cout << "Message of length " << messageLength << "\n";
         for (size_t i{}; i < messageLength; ++i)
           std::cout << static_cast<char>(arr[offset + i]);
         std::cout << "\n";
+        **/
         offset += messageLength;
       };
       size_t offset{20};
@@ -115,3 +120,15 @@ void moldcast::Receiver::receiveLoop() {
     }
   }
 }
+void moldcast::Receiver::account_for(std::uint64_t sequence_number, std::uint16_t message_count) {
+  if (sequence_number == next_expected) {
+    next_expected += message_count;
+  } else if (sequence_number < next_expected) { // fills a gap
+    std::cout << "Gap filled\n";
+  } else if (sequence_number > next_expected) { // gap
+    std::cout << "Gap detected\n";
+    next_expected = sequence_number + message_count;
+  }
+}
+
+

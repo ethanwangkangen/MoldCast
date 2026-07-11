@@ -87,6 +87,10 @@ void moldcast::sendLoop(moldcast::Sender &sender, sockaddr_in &destAddr,
     }
     // sendto(sender.socket.getFileDesc(), buffer.data(), offset, 0,
     //   reinterpret_cast<sockaddr *>(&destAddr), addrLen);
-    sender.socket.sendTo(buffer, offset, destAddr, addrLen);
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> distrDrop(1, 5); // 20 percent chance of dropping
+
+    if (distrDrop(gen) != 1) sender.socket.sendTo(buffer, offset, destAddr, addrLen);
   }
 }
