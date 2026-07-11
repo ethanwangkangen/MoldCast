@@ -89,6 +89,23 @@ int main(int argc, char *argv[]) {
       std::memcpy(&message_count, arr.data() + 18, sizeof(message_count));
       message_count = ntohs(message_count);
       std::cout << "Message count is " << message_count << "\n";
+      
+      auto get_message = [](std::array<std::byte, 2048>& arr, size_t& offset) {
+        std::uint16_t messageLength{};
+        std::memcpy(&messageLength, arr.data() + offset, sizeof(messageLength));
+        offset += sizeof(messageLength);
+        messageLength = ntohs(messageLength);
+        std::cout << "Message of length " << messageLength << "\n";
+        for (size_t i{}; i < messageLength; ++i) 
+          std::cout << static_cast<char> (arr[offset+i]);
+        std::cout << "\n";
+        offset += messageLength;
+      };
+      size_t offset{20};
+      for (int i{}; i < message_count; ++i) {
+        // deserialise messages
+        get_message(arr, offset);
+      }
     }
   }
 
